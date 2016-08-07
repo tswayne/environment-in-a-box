@@ -11,6 +11,9 @@ if [ -f ~/.bash_local ]; then
       . ~/.bash_local   # --> Read /etc/bashrc, if present.
 fi
 
+# Exports
+export NODE_ENV=development;
+
 # Comands
 alias ll='ls -alF'
 alias la='ls -A'
