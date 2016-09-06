@@ -24,6 +24,7 @@ alias update-env="cd ~/dev-env; git pull origin master";
 alias gc="git add -A; git commit -m"
 alias gpm="git checkout master; git pull origin master;"
 alias gs="git status;"
+alias gb="git checkout -b"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
