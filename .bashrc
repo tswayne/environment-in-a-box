@@ -20,6 +20,14 @@ alias la='ls -A'
 alias l='ls -CF'
 alias hist="history | grep "
 alias update-env="cd ~/dev-env; git pull origin master";
+alias dock='docker-machine start; docker-machine env; eval "$(docker-machine env default)"'
+
+# Languages
+## Ruby
+alias rt="bundle exec rake test"
+alias rs="bundle exec rails server"
+alias rsp="bundle exec rails server -p"
+
 # git
 alias gc="git add -A; git commit -m"
 alias gpm="git checkout master; git pull origin master;"
