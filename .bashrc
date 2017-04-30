@@ -13,6 +13,7 @@ fi
 
 # Exports
 export NODE_ENV=development;
+export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 # Comands
 alias ll='ls -alF'
@@ -33,8 +34,13 @@ alias gc="git add -A; git commit -m"
 alias gpm="git checkout master; git pull origin master;"
 alias gs="git status;"
 alias gb="git checkout -b"
+prune() {  comm -13 <(git branch -r | cut -d'/' -f 2) <(git branch --merged | grep -v "*") |  awk '{print "git branch -D " $1}'; }
+prunef() {  comm -13 <(git branch -r | cut -d'/' -f 2) <(git branch --merged | grep -v "*") | xargs git branch -D; }
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
