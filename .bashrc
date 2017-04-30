@@ -22,7 +22,8 @@ alias l='ls -CF'
 alias hist="history | grep "
 alias update-env="cd ~/environment-in-a-box; git pull origin master";
 alias dock='docker-machine start; docker-machine env; eval "$(docker-machine env default)"'
-
+alias dv="cd ~/dev";
+prt() { lsof -n -i4TCP:$1 | grep LISTEN; }
 # Languages
 ## Ruby
 alias rt="bundle exec rake test"
