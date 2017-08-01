@@ -21,9 +21,17 @@ alias la='ls -A'
 alias l='ls -CF'
 alias hist="history | grep "
 alias update-env="cd ~/environment-in-a-box; git pull origin master";
-alias dock='docker-machine start; docker-machine env; eval "$(docker-machine env default)"'
 alias dv="cd ~/dev";
 prt() { lsof -n -i4TCP:$1 | grep LISTEN; }
+
+# Docker
+alias dock='docker-machine start; docker-machine env; eval "$(docker-machine env default)"'
+dssh() { docker exec -it $1 /bin/bash; }
+dp() { docker ps | grep $1; }
+alias dc="docker-compose"
+dcrs() { docker-compose stop $1; docker-compose rm -f $1; docker-compose up -d $1; }
+dcl() { docker-compose logs -f $1; }
+
 # Languages
 ## Ruby
 alias rt="bundle exec rake test"
