@@ -9,23 +9,23 @@ esac
 # Exports
 export NODE_ENV=development;
 
-# Comands
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias hist="history | grep "
-alias update-env="cd ~/environment-in-a-box; git pull origin master";
-alias dv="cd ~/dev";
+# General comands
+ll() { ls -alF $@; }
+la() { ls -Ai $@; }
+l() { ls -CF $@; }
+hist() { history | grep $@; }
+ue() { cd ~/environment-in-a-box; git pull origin master; }
+dv() { cd ~/dev; }
 prt() { lsof -n -i4TCP:$1 | grep LISTEN; }
-alias menv='cat ~/environment-in-a-box/.bashrc'
-ssha() { eval $(ssh-agent) && ssh-add; } 
-
+ssha() { eval $(ssh-agent) && ssh-add; }
+bp() { cat ~/environment-in-a-box/.bashrc; }
+ue() { source ~/environment-in-a-box/.bashrc; }
 # Docker
-alias dock='docker-machine start; docker-machine env; eval "$(docker-machine env default)"'
+dock() { docker-machine start; docker-machine env; eval "$(docker-machine env default)"; }
 dssh() { docker exec -it $1 /bin/bash; }
 dcssh() { if [ -z $1 ]; then docker-compose exec $(basename `pwd`) /bin/bash; else docker-compose exec $1 /bin/bash; fi }
 dp() { docker ps | grep $1; }
-alias dc="docker-compose"
+dc() { docker-compose $@; }
 dcrsb() { if [ -z $1 ]; then docker-compose build $(basename `pwd`); dcrs; else docker-compose build $1; dcrs $1; fi }
 dcbrs() { if [ -z $1 ]; then docker-compose build $(basename `pwd`); dcrs; else docker-compose build $1; dcrs $1; fi }
 dcrs() { if [ -z $1 ]; then docker-compose stop $(basename `pwd`); docker-compose rm -f $(basename `pwd`); docker-compose up -d $(basename `pwd`); else docker-compose stop $1; docker-compose rm -f $1; docker-compose up -d $1; fi }
@@ -34,17 +34,17 @@ dcl() { if [ -z $1 ]; then docker-compose logs -f $(basename `pwd`); else docker
 
 # Languages
 ## Ruby
-alias rt="bundle exec rake test"
-alias rs="bundle exec rails server"
-alias rsp="bundle exec rails server -p"
-alias rc="bundle exec rails c"
-alias be="bundle exec"
+rt() { bundle exec rake test $@; }
+rs() { bundle exec rails server $@; }
+rsp() { bundle exec rails server -p $@; }
+rc() { bundle exec rails c; }
+be() { bundle exec $@; }
 
 ## Python
 ve() { type foo &>/dev/null || source /usr/local/bin/virtualenvwrapper.sh; }
 
 # git
-alias gc="git add -A; git commit -m"
+gc() { git add -A; git commit -m "$1"; }
 gpq() { gpb qa; }
 gpd() { gpb develop; }
 gpm() { gpb master; }
