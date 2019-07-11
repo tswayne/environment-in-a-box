@@ -6,14 +6,8 @@ case $- in
       *) return;;
 esac
 
-
-if [ -f ~/.bash_local ]; then
-      . ~/.bash_local   # --> Read /etc/bashrc, if present.
-fi
-
 # Exports
 export NODE_ENV=development;
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 # Comands
 alias ll='ls -alF'
@@ -43,6 +37,11 @@ dcl() { if [ -z $1 ]; then docker-compose logs -f $(basename `pwd`); else docker
 alias rt="bundle exec rake test"
 alias rs="bundle exec rails server"
 alias rsp="bundle exec rails server -p"
+alias rc="bundle exec rails c"
+alias be="bundle exec"
+
+## Python
+ve() { type foo &>/dev/null || source /usr/local/bin/virtualenvwrapper.sh; }
 
 # git
 alias gc="git add -A; git commit -m"
@@ -56,3 +55,6 @@ gr() { echo "You sure?"; read answer; if [ "$answer" == "no" ]; then echo "Skipp
 prune() {  comm -13 <(git branch -r | cut -d'/' -f 2) <(git branch --merged | grep -v "*") |  awk '{print "git branch -D " $1}'; }
 prunef() {  comm -13 <(git branch -r | cut -d'/' -f 2) <(git branch --merged | grep -v "*") | xargs git branch -D; }
 
+if [ -f ~/.bash_local ]; then
+      . ~/.bash_local   # --> Read /etc/bashrc, if present.
+fi
