@@ -49,8 +49,8 @@ gpq() { gpb qa; }
 gpd() { gpb develop; }
 gpm() { gpb master; }
 gpb() { git checkout $1; git pull origin $1; }
-alias gs="git status;"
-alias gb="git checkout -b"
+gs() { git status; }
+gb() { git checkout -b "$1"; }
 gr() { echo "You sure?"; read answer; if [ "$answer" == "no" ]; then echo "Skipped"; else git reset --hard HEAD; fi }
 prune() {  comm -13 <(git branch -r | cut -d'/' -f 2) <(git branch --merged | grep -v "*") |  awk '{print "git branch -D " $1}'; }
 prunef() {  comm -13 <(git branch -r | cut -d'/' -f 2) <(git branch --merged | grep -v "*") | xargs git branch -D; }
