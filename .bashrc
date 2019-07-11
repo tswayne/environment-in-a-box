@@ -19,6 +19,7 @@ dv() { cd ~/dev; }
 prt() { lsof -n -i4TCP:$1 | grep LISTEN; }
 ssha() { eval $(ssh-agent) && ssh-add; }
 bp() { cat ~/environment-in-a-box/.bashrc; }
+bl() { cat ~/.bash_local; }
 ue() { source ~/environment-in-a-box/.bashrc; }
 # Docker
 dock() { docker-machine start; docker-machine env; eval "$(docker-machine env default)"; }
