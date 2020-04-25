@@ -14,13 +14,14 @@ ll() { ls -alF $@; }
 la() { ls -Ai $@; }
 l() { ls -CF $@; }
 hist() { history | grep $@; }
-ue() { cd ~/environment-in-a-box; git pull origin master; }
+pe() { cd ~/environment-in-a-box; git pull origin master; }
 dv() { cd ~/dev; }
 prt() { lsof -n -i4TCP:$1 | grep LISTEN; }
 ssha() { eval $(ssh-agent) && ssh-add; }
 bp() { cat ~/environment-in-a-box/.bashrc; }
 bl() { cat ~/.bash_local; }
 ue() { source ~/environment-in-a-box/.bashrc; }
+
 # Docker
 dock() { docker-machine start; docker-machine env; eval "$(docker-machine env default)"; }
 dssh() { docker exec -it $1 /bin/bash; }
@@ -59,3 +60,4 @@ prunef() {  comm -13 <(git branch -r | cut -d'/' -f 2) <(git branch --merged | g
 if [ -f ~/.bash_local ]; then
       . ~/.bash_local   # --> Read /etc/bashrc, if present.
 fi
+
