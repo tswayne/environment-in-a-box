@@ -8,6 +8,7 @@ esac
 
 # Exports
 export NODE_ENV=development;
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # General comands
 ll() { ls -alF $@; }
