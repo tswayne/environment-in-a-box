@@ -50,7 +50,8 @@ ve() { type foo &>/dev/null || source /usr/local/bin/virtualenvwrapper.sh; }
 gc() { git add -A; git commit -m "$1"; }
 gpq() { gpb qa; }
 gpd() { gpb develop; }
-gpm() { gpb master; }
+gpms() { gpb master; }
+gpm() { gpb main; }
 gpb() { git checkout $1; git pull origin $1; }
 gs() { git status; }
 gb() { git checkout -b "$1"; }
